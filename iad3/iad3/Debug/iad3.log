@@ -1,14 +1,13 @@
-﻿  functions.cpp
+﻿  Źródło.cpp
 C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\Neuron.h(12,2): warning C4091: "typedef ": zignorowano na lewo od "Weights" podczas gdy brak deklaracji zmiennej
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\gnuplot_i.hpp(956,1): warning C4297: "Gnuplot::~Gnuplot": wygenerowano wyjątek przy założeniu, że funkcja nie generuje wyjątku lecz wygenerowała
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\gnuplot_i.hpp(956,1): message : destruktor lub program wycofujący przydzielenia ma (być może niejawną) specyfikację wyjątku niezwracalnego
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\gnuplot_i.hpp(1605,28): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\gnuplot_i.hpp(1607,38): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\functions.cpp(27,19): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\functions.cpp(52,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\functions.cpp(57,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\functions.cpp(68,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\functions.cpp(73,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\functions.cpp(78,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
-C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\gnuplot_i.hpp(1879): warning C4715: "Gnuplot::file_available”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\Źródło.cpp(15,19): warning C4244: "inicjowanie": konwersja z "_Rep" do "unsigned int", możliwa utrata danych
+          with
+          [
+              _Rep=std::chrono::system_clock::rep
+          ]
+C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\Źródło.cpp(29,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\Źródło.cpp(37,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\Źródło.cpp(39,31): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\Źródło.cpp(56,23): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
+C:\Users\Paweł\Documents\GitHub\iad3\iad3\iad3\Źródło.cpp(58,27): warning C4018: "<": niezgodność typu ze znakiem/bez znaku
   iad3.vcxproj -> C:\Users\Paweł\Documents\GitHub\iad3\iad3\Debug\iad3.exe

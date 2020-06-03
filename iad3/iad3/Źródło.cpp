@@ -24,22 +24,8 @@ int main()
         neurons.push_back(Neuron(index[i]));
     }
 
-    //tworzenie neuronu liniowego
-    Neuron linearNeuron(neuronNo);
 
-    //ustawianie R dla neuronow radialnych
-    /*for (int i = 0; i < neurons.size(); i++)
-    {
-        double maximum = 0;
-        for (int j = 0; j < neurons.size(); j++)
-        {
-            if ((distance(neurons[i], neurons[j]) > maximum))
-            {
-                maximum = distance(neurons[i], neurons[j]);
-            }
-        }
-        neurons[i].setR(maximum/sqrt(2*neurons.size()));
-    }*/
+    Neuron linearNeuron(neuronNo);
     for (int i = 0; i < neurons.size(); i++)
         neurons[i].setR(1);
 
@@ -52,8 +38,6 @@ int main()
         {
             for (int j = 0; j < neurons.size(); j++)
             {
-                //if (counter == 20)
-                    //cout << distance(trainingPoints[i], neurons[j]) << "  " << Gauss(distance(trainingPoints[i], neurons[j]), neurons[j]) << endl;
                 neurons[j].setOut(Gauss(distance(trainingPoints[i], neurons[j]), neurons[j]));
             }
             linearNeuron.feedForward(neurons);

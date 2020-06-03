@@ -140,7 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="functions.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Źródło.cpp" />
