@@ -92,7 +92,7 @@ def train_on_data_set(data, test_data, directory, neurons, neighbours, epochs):
             now = datetime.datetime.now()
             godzinka = now.strftime("%Y-%m-%d %H-%M-%S")
 
-            fig.savefig(f'{directory}/approx/c{i}_n{j}'+ godzinka +'.png')
+            fig.savefig(f'{directory}/approx/c{i}_n{j}_'+ godzinka +'.png')
             err_fig.savefig(f'{directory}/error/c{i}_n{j}.png')
             plt.close(fig)
             plt.close(err_fig)
