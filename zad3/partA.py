@@ -36,6 +36,7 @@ def training_session(data, test, axes, rbf, epochs):
     error_test.append(rbf.avg_error(test))
 
     for _ in range(epochs):
+
         random.shuffle(data)
         for sample in data:
             rbf.back_propagation(sample[0], sample[1])
@@ -65,11 +66,13 @@ def train_on_data_set(data, test_data, directory, neurons, neighbours, epochs):
     err_fig, err_axes = plt.subplots()
 
     for i in range(1, min(neurons, len(data)) + 1):
+        print("Epoka: ", i)
         centers = roll_centers(data, i)
         centers_value = [sample[0] for sample in centers]
         rbf = RBF(centers_value, 1, 0.1)
 
         for j in range(1, neighbours + 1):
+
             if j >= i:
                 break
 
@@ -99,23 +102,23 @@ def train_on_data_set(data, test_data, directory, neurons, neighbours, epochs):
 
 
 def main():
-    print("dupa")
+    print("Zadanie 3 - 224460, 224270")
     matplotlib.use('Agg')
     dir = 'partA'
     neuron_max = 20
     neighbour_max = 10
     epochs = 20
-    print("dupa1")
+    print("Ladowanie danych")
     data1 = load_data('approximation_train_1.txt')
     data2 = load_data('approximation_train_2.txt')
     test = load_data('approximation_test.txt')
-    print("dupa2")
+    print("Rozpoczęcie nauki")
     train_on_data_set(data1, test, dir + '/t1',
                       neuron_max, neighbour_max, epochs)
-    print("dupa3")
+    print("Zakończenie nauki na pierwszym zestawie danyhc\nRozpoczecie nauki na drugim zestawie danych")
     train_on_data_set(data2, test, dir + '/t2',
                       neuron_max, neighbour_max, epochs)
-    print("dupa_koniec")
+    print("Koniec programu, dane zostały zapisane ")
 
 
 if __name__ == '__main__':
