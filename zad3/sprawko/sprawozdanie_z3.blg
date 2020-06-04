@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (MiKTeX 2.9.7380 64-bit)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: sprawozdanie_z3.aux
+The style file: plain.bst
+Database file #1: bibliografia_z2.bib
+Warning--to sort, need author, organization, or key in prezentacja4
+You've used 2 entries,
+            2118 wiz_defined-function locations,
+            503 strings with 4194 characters,
+and the built_in function-call counts, 343 in all, are:
+= -- 29
+> -- 8
+< -- 0
++ -- 4
+- -- 2
+* -- 17
+:= -- 57
+add.period$ -- 3
+call.type$ -- 2
+change.case$ -- 5
+chr.to.int$ -- 0
+cite$ -- 3
+duplicate$ -- 17
+empty$ -- 38
+format.name$ -- 2
+if$ -- 71
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 0
+newline$ -- 10
+num.names$ -- 2
+pop$ -- 10
+preamble$ -- 1
+purify$ -- 5
+quote$ -- 0
+skip$ -- 13
+stack$ -- 0
+substring$ -- 10
+swap$ -- 3
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 8
+warning$ -- 1
+while$ -- 2
+width$ -- 3
+write$ -- 15
+(There was 1 warning)

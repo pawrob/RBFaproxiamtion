@@ -1,0 +1,343 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[T1]{polski}
+\usepackage[cp1250]{inputenc}
+\newcommand{\BibTeX}{{\sc Bib}\TeX} 
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{grffile}
+\usepackage{listings}
+\usepackage{caption}
+
+\setlength{\textheight}{21cm}
+
+\title{{\bf Zadanie nr 3 - implementacja i zastosowanie sieci RBF}\linebreak
+	Inteligentna Analiza Danych}
+\author{Robert Makrocki, 224368 \and Wojciech Pi¹tkowski, 224399}
+\date{03.06.2020}
+
+\begin{document}
+\clearpage\maketitle
+\thispagestyle{empty}
+\newpage
+\setcounter{page}{1}
+\section{Cel zadania}
+
+Wykorzystanie sieci RBF do aproksymacji i klasyfikacji na danych\\
+z poprzednich zadañ.
+\bigskip\bigskip\bigskip
+\section{Wstêp teoretyczny}
+Neuronowa sieæ RBF z dwoma warstwami: warstw¹ radialn¹ z neuronami z gaussowsk¹ funkcj¹ radialn¹ i warstw¹ neuronów z identycznoœciow¹ funkcj¹ aktywacji.\\
+
+\begin{center}
+	Wzór na radialn¹ funkcjê bazow¹ \cite{prezentacja6}:\\
+\end{center}
+\begin{equation}
+\varphi_{i}(x) = \varphi(\|x-c_{i}\|)
+\label{bazowa}
+\end{equation}
+\begin{center}
+	gdzie: $x$ - wektor, $c_{i}$ - centrum.\\
+\end{center}
+\bigskip
+
+\begin{center}
+	Wzór na funkcjê celu \cite{prezentacja6}:\\
+\end{center}
+\begin{equation}
+E = \sum_{i=1}^{p} \left[\sum_{j=1}^{K} w_{j} \varphi(\|x_{i}-c_{j}\|) - d_{i}\right]^2
+\label{celu}
+\end{equation}
+\begin{center}
+	gdzie: $p$ - iloœæ wzorców treningowych.\\
+\end{center}
+
+\begin{center}
+	Funkcja Gaussa \cite{prezentacja6}:\\
+\end{center}
+\begin{equation}
+\varphi(x_{i}) = exp(-\frac{\|x-c_{i}\|^2}{2\sigma_{i}^2})
+\label{gaussa}
+\end{equation}
+
+\section{Eksperymenty i wyniki}
+\bigskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PODROZDZIA£ PT. Osobna nauka warstw, aproksymacja funkcji 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Osobna nauka warstw, aproksymacja funkcji}
+
+Eksperyment polega³ na wykorzystaniu sieci RBF do aproksymacji funkcji.\\
+Do nauki wykorzystano dane z plików:\\
+\begin{itemize}
+	\item \texttt{approximation\_train\_1.txt},
+	\item \texttt{approximation\_train\_2.txt}.
+\end{itemize}
+Natomiast w celu sprawdzenia jakoœci aproksymacji u¿yto\\
+dane z pliku \texttt{approximation\_test.txt}.\\
+	
+\subsubsection{Za³o¿enia}
+— Warstwy trenowane osobno.\\
+— Dla warstwy radialnej, wektory centrów dobierane poprzez losowy wybór wektorów ze zbioru treningowego.\\
+— Wspó³czynniki skaluj¹ce dobierane z uwzglêdnieniem odleg³oœci miêdzy centrami i wp³ywu poszczególnych funkcji gaussowskich.\\
+— Wagi neuronów warstwy liniowej dobierane s¹ tak jak wagi warstwy wyjœciowej sieci MLP za pomoc¹ metody wstecznej propagacji b³êdów \cite{prezentacja4}.\\\\
+Domyœlne wartoœci parametrów:\\ 
+— Iloœæ neuronów w warstwie radialnej = 20.\\
+— Maksymalna liczba s¹siadów = 5.\\
+— Iloœc epok = 20.\\
+
+\subsubsection{Przebieg}
+— Losujemy wektory centrów warstwy radialnej za pomoc¹ wektorów ze zbioru treningowego.\\
+— Liczymy iloœæ s¹siadów i sortujemy ich wzglêdem odleg³oœci.\\
+— Rozpoczynamy naukê sieci.\\
+— Punkty treningowe s¹ przemieszane po ka¿dej epoce.\\
+— Wsteczna propagacja.\\
+— Liczymy b³¹d œredniokwadratowy.\\
+— Co epokê efekty nauki przenosimy na wykresy i zapisujemy do katalogów.\\
+
+\newpage
+\subsubsection{Rezultat}
+Rezultaty nauki sieci RBF dla domyœlnych wartoœci parametrów.\\
+Wykresy s¹ tworzone w odniesieniu do odpowiedniej iloœci centr i s¹siadów.\\
+Lewy wykres obrazuje funkcjê aproksymacji na uk³adzie wspó³rzêdnych, a prawy wykres b³¹d œredniokwadratowy.\\\\
+Rezultaty treningu na danych z pliku \texttt{approximation\_train\_1.txt}:\\\\
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/approx/c2_n1.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/error/c2_n1.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c2_n1}	
+\end{figure}
+\bigskip
+
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/approx/c4_n3.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/error/c4_n3.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c4_n3}	
+\end{figure}
+\bigskip
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/approx/c6_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/error/c6_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c6_n5}	
+\end{figure}
+\bigskip
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/approx/c10_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/error/c10_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c10_n5}	
+\end{figure}
+\bigskip
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/approx/c15_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/error/c15_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c15_n5}	
+\end{figure}
+\bigskip
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/approx/c20_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t1/error/c20_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c20_n5}	
+\end{figure}
+
+\newpage
+\noindent Rezultaty treningu na danych z pliku \texttt{approximation\_train\_2.txt}:\\\\
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/approx/c2_n1.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/error/c2_n1.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c2_n1_1}	
+\end{figure}
+\bigskip
+
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/approx/c4_n3.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/error/c4_n3.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c4_n3_1}	
+\end{figure}
+\bigskip
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/approx/c6_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/error/c6_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c6_n5_1}	
+\end{figure}
+\bigskip
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/approx/c10_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/error/c10_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c10_n5_1}	
+\end{figure}
+\bigskip
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/approx/c15_n1.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/error/c15_n1.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c15_n1_1}	
+\end{figure}
+\bigskip
+\begin{figure}[H]
+	\centering	
+	\begin{minipage}{.5\textwidth}
+		\hspace*{-1.5in}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/approx/c15_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering
+		\includegraphics[width=1.6\linewidth]{"../partA/t2/error/c15_n5.png"}
+		\vspace{-0.3cm}
+	\end{minipage}
+	\label{c15_n5_1}	
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PODROZDZIA£ PT. Osobna nauka warstw, klasyfikacja
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newpage
+%\subsection{Osobna nauka warstw, klasyfikacja}
+%Eksperyment polega³ na wykorzystaniu sieci RBF w zadaniu klasyfikacji.\\
+%Do nauki sieci wykorzystano dane z pliku \texttt{classification\_train.txt}\\
+%Natomiast w celu sprawdzenia jakoœci klasyfikacji u¿yto\\
+%dane z pliku \texttt{classification\_test.txt}.\\
+%
+%\subsubsection{Za³o¿enia}
+%— Warstwy trenowane osobno.\\
+%— Dla warstwy radialnej, wektory centrów dobierane poprzez wykorzystanie wybranego algorytmu z zadania 2 (algorytm k-œrednich \cite{kmeans}, algorytm Kohonena \cite{prezentacja6}, algorytm gazu neuronowego \cite{prezentacja6}).\\
+%— Wspó³czynniki skaluj¹ce dobierane z uwzglêdnieniem odleg³oœci miêdzy centrami i wp³ywu poszczególnych funkcji gaussowskich.\\
+%— Wagi neuronów warstwy liniowej dobierane s¹ tak jak wagi warstwy wyjœciowej sieci MLP za pomoc¹ metody wstecznej propagacji b³êdów \cite{prezentacja4}.\\
+%
+%\subsubsection{Przebieg}
+%
+%\subsubsection{Rezultat}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WNIOSKI
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Wnioski}
+— Znacz¹cy wp³yw na efekt nauki maj¹ wylosowane centra.\\
+— Wiêksza iloœæ centr poprawia jakoœæ aproksymacji (nie wiêksza od iloœci punktów ze zbioru danych).\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BIBLIOGRAFIA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\refname{Bibliografia}
+\bibliographystyle{plain}
+\bibliography{bibliografia_z2}
+
+\end{document}
