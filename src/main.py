@@ -16,11 +16,11 @@ RBF = RBF(bias, learningFactor)
 
 c = input("Na ktorych danych chcesz trenowac siec, na 1 czy 2? : ")
 if c == '1' :
-    data1 = pd.read_csv("approximation_train_1.txt", header=None, sep=' ')
+    data1 = pd.read_csv("data_set/approximation_train_1.txt", header=None, sep=' ')
     inputValues = data1[0]
     outputValues = data1[1]
 elif c == '2' :
-    data1 = pd.read_csv("approximation_train_2.txt", header=None, sep=' ')
+    data1 = pd.read_csv("data_set/approximation_train_2.txt", header=None, sep=' ')
     inputValues = data1[0]
     outputValues = data1[1]
 
@@ -74,7 +74,7 @@ plt.show()
 
 print("Czas na test")
 #Test na danych testowych
-data = pd.read_csv("approximation_test.txt",header = None, sep = ' ')
+data = pd.read_csv("data_set/approximation_test.txt", header = None, sep =' ')
 testXValues = data[0]
 testYValues = data[1]
 testYOutputValues = []
