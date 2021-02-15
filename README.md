@@ -1,8 +1,7 @@
 # RBF based aproximation
 
 ## Introduction
-Celem zadania była implementacja radialnej sieci neuronowej opartej na aproksymacji zbioru wejściowych danych.
-Zrealizowaliśmy projekt  z wykorzystaniem aproksymacji oraz osobnej nauki dwóch warstw.
+The aim of the task was to implement a radial neural network based on the approximation of the input data set. We implemented the project using approximation and separate learning of two layers.
 
 ## Technologies
 * Python 3.6
